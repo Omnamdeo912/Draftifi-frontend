@@ -44,18 +44,31 @@ const ContractPreview: React.FC<ContractPreviewProps> = ({ answers, onBack }) =>
   };
 
   const handleEdit = () => {
+     if (contract) {
+      // Extract plain text from the HTML for editing
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(contract.contract_text, 'text/html');
+      setEditedText(doc.body.innerText); // Extract plain text
+      setIsEditing(true);
+    }
     setIsEditing(true);
   };
 
   const handleSave = () => {
-    if (contract) {
-      setContract({
-        ...contract,
-        contract_text: editedText
-      });
-      setIsEditing(false);
-    }
-  };
+  if (contract) {
+    // Convert plain text back to HTML while preserving structure
+    const formattedHTML = editedText
+      .split('\n') // Split text into lines
+      .map((line) => `<p>${line.trim()}</p>`) // Wrap each line in <p> tags
+      .join(''); // Join lines back into a single string
+
+    setContract({
+      ...contract,
+      contract_text: formattedHTML, // Save the formatted HTML
+    });
+    setIsEditing(false);
+  }
+};
 
   const handleCancel = () => {
     if (contract) {
@@ -64,10 +77,23 @@ const ContractPreview: React.FC<ContractPreviewProps> = ({ answers, onBack }) =>
     }
   };
   return (
+    
     <div className="p-10 bg-white rounded-lg w-full shadow-xl border border-gray-200">
+        <div className="flex justify-end items-center mb-4">
+        {/* <h2 className="text-2xl font-bold">Contract Preview</h2> */}
+        {contract && !isEditing && (
+          <button
+            onClick={handleEdit}
+            className="flex items-center gap-2 text-[#5D5E80] hover:text-[#7D7E9F]"
+          >
+            <Pencil className="h-4 w-4" />
+            Edit
+          </button>
+        )}
+      </div>
       <div className="text-center mb-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">EMPLOYMENT CONTRACT</h2>
-        <p className="text-lg italic">This EMPLOYMENT CONTRACT (this "Agreement") dated this 12th day of May, 2025</p>
+        <h3 className="text-2xl font-bold text-gray-900 mb-4">EMPLOYMENT CONTRACT</h3>
+        <p className="text-lg italic">This EMPLOYMENT CONTRACT (this "Agreement") dated this 10th day of May, 2025</p>
       </div>
 
       {error && (
@@ -81,15 +107,15 @@ const ContractPreview: React.FC<ContractPreviewProps> = ({ answers, onBack }) =>
           <button
             onClick={handleGenerateContract}
             disabled={loading}
-            className="bg-blue-700 text-white px-8 py-3 rounded-lg hover:bg-blue-800 disabled:opacity-50 transition-colors duration-200"
+            className="bg-[#303030] text-white px-4 py-2 rounded hover:bg-[#505050] disabled:opacity-50"
           >
             {loading ? 'Generating...' : 'Generate Contract'}
           </button>
           <button
             onClick={handleGenerateDummyContract}
-            className="ml-4 bg-gray-700 text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition-colors duration-200"
+            className="ml-4 bg-[#5D5E80] text-white px-4 py-2 rounded hover:bg-[#7D7E9F]"
           >
-            Generate Dummy Contract (Test)
+            Template Contract
           </button>
         </div>
       )}
@@ -114,7 +140,7 @@ const ContractPreview: React.FC<ContractPreviewProps> = ({ answers, onBack }) =>
                     </button>
                     <button
                       onClick={handleSave}
-                      className="px-8 py-3 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors duration-200"
+                      className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
                     >
                       Save Changes
                     </button>
@@ -131,7 +157,7 @@ const ContractPreview: React.FC<ContractPreviewProps> = ({ answers, onBack }) =>
 
       <button
         onClick={onBack}
-        className="mt-8 bg-gray-700 text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition-colors duration-200"
+        className="mt-4 bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
       >
         Back to Questions
       </button>

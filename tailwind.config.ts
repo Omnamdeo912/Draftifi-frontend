@@ -23,6 +23,47 @@ export default {
 			fontFamily: {
 				sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
 			},
+			// colors: {
+			// 	border: 'hsl(var(--border))',
+			// 	input: 'hsl(var(--input))',
+			// 	ring: 'hsl(var(--ring))',
+			// 	background: 'hsl(var(--background))',
+			// 	foreground: 'hsl(var(--foreground))',
+			// 	primary: {
+			// 		DEFAULT: 'hsl(var(--primary))',
+			// 		foreground: 'hsl(var(--primary-foreground))',
+			// 	},
+			// 	secondary: {
+			// 		DEFAULT: 'hsl(var(--secondary))',
+			// 		foreground: 'hsl(var(--secondary-foreground))',
+			// 	},
+			// 	destructive: {
+			// 		DEFAULT: 'hsl(var(--destructive))',
+			// 		foreground: 'hsl(var(--destructive-foreground))',
+			// 	},
+			// 	muted: {
+			// 		DEFAULT: 'hsl(var(--muted))',
+			// 		foreground: 'hsl(var(--muted-foreground))',
+			// 	},
+			// 	accent: {
+			// 		DEFAULT: 'hsl(var(--accent))',
+			// 		foreground: 'hsl(var(--accent-foreground))',
+			// 	},
+			// 	popover: {
+			// 		DEFAULT: 'hsl(var(--popover))',
+			// 		foreground: 'hsl(var(--popover-foreground))',
+			// 	},
+			// 	card: {
+			// 		DEFAULT: 'hsl(var(--card))',
+			// 		foreground: 'hsl(var(--card-foreground))',
+			// 	},
+			// 	draftifi: {
+			// 		blue: '#303030',            // Charcoal grey
+			// 		lightBlue: '#5E5D80',       // Refined purple grey
+			// 		green: '#6A80C0',           // Deep muted blue-violet
+			// 		gray: '#FFFFFF'             // White
+			// 	}
+			// },
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -30,32 +71,16 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				primary: {
-					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))',
+					DEFAULT: '#303030',         // Charcoal grey
+					foreground: '#FFFFFF'       // White
 				},
 				secondary: {
-					DEFAULT: 'hsl(var(--secondary))',
-					foreground: 'hsl(var(--secondary-foreground))',
-				},
-				destructive: {
-					DEFAULT: 'hsl(var(--destructive))',
-					foreground: 'hsl(var(--destructive-foreground))',
-				},
-				muted: {
-					DEFAULT: 'hsl(var(--muted))',
-					foreground: 'hsl(var(--muted-foreground))',
+					DEFAULT: '#5E5D80',         // Refined purple grey
+					foreground: '#FFFFFF'       // White
 				},
 				accent: {
-					DEFAULT: 'hsl(var(--accent))',
-					foreground: 'hsl(var(--accent-foreground))',
-				},
-				popover: {
-					DEFAULT: 'hsl(var(--popover))',
-					foreground: 'hsl(var(--popover-foreground))',
-				},
-				card: {
-					DEFAULT: 'hsl(var(--card))',
-					foreground: 'hsl(var(--card-foreground))',
+					DEFAULT: '#6A80C0',         // Deep muted blue-violet
+					foreground: '#FFFFFF'       // White
 				},
 				draftifi: {
 					blue: '#303030',            // Charcoal grey
