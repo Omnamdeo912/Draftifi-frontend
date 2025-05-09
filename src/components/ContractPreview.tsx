@@ -33,6 +33,10 @@ const ContractPreview: React.FC<ContractPreviewProps> = ({ answers, onBack }) =>
   };
 
   const handleGenerateDummyContract = () => {
+  setLoading(true);
+  setError(null);
+
+  setTimeout(() => {
     const contractHTML = generateContractHTML(answers);
     setContract({
       contract_text: contractHTML,
@@ -41,7 +45,10 @@ const ContractPreview: React.FC<ContractPreviewProps> = ({ answers, onBack }) =>
       legal_compliance: { missing_clauses: [], risks: [] }
     });
     setEditedText(contractHTML);
-  };
+    setLoading(false);
+  }, 15000); // simulate 15 seconds
+};
+
 
   const handleEdit = () => {
      if (contract) {
@@ -104,12 +111,14 @@ const ContractPreview: React.FC<ContractPreviewProps> = ({ answers, onBack }) =>
 
       {!contract && (
         <div className="space-y-6">
-           <button
-            onClick={handleGenerateDummyContract}
-            className="ml-0 bg-[#5D5E80] text-white px-4 py-2 rounded hover:bg-[#7D7E9F]"
+            <button
+               onClick={handleGenerateDummyContract}
+              disabled={loading}
+            className="ml-0 bg-[#5D5E80] text-white px-4 py-2 rounded hover:bg-[#7D7E9F] disabled:opacity-50"
           >
-            Generate Contract
+            {loading ? 'Generating...' : 'Generate Contract'}
           </button>
+
           <button
             onClick={handleGenerateContract}
             disabled={loading}
