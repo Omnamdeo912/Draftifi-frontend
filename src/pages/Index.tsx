@@ -62,16 +62,25 @@ const Index = () => {
 
   // Update checklist when answers change
   useEffect(() => {
-    if (Object.keys(answers).length === 0) return;
-    
-    const completedSections = getCompletedSections(answers);
-    
-    setChecklistItems(prevItems => 
-      prevItems.map(item => ({
-        ...item,
-        isCompleted: completedSections.includes(item.type)
-      }))
-    );
+     if (Object.keys(answers).length === 0) return;
+
+  // Find all section types that have at least one answered question
+  const completedSections = new Set<string>();
+  Object.keys(answers).forEach(key => {
+    const questionId = parseInt(key);
+    const question = questions.find(q => q.id === questionId);
+    if (question && answers[key]) {
+      completedSections.add(question.sectionType); // Use sectionType instead of category
+    }
+  });
+
+  // Update checklist items based on completed sections
+  setChecklistItems(prevItems =>
+    prevItems.map(item => ({
+      ...item,
+      isCompleted: completedSections.has(item.type) // Match sectionType with checklist item type
+    }))
+  );
     
     // Generate contract preview as answers are provided
     const generatedContract = generateContractHTML(answers);
@@ -228,11 +237,70 @@ const Index = () => {
         {/* Header */}
         <header className="flex justify-between items-center mb-6">
           <Logo />
-          {contractContent && (
+          {/* {contractContent && (
             <Button variant="outline" onClick={handleDownload}>
               <Download className="mr-2 h-4 w-4" /> Download
             </Button>
           )}
+              <button className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 hover:bg-gray-300">
+      <img
+        src="/path-to-profile-icon.png" // Replace with the path to your profile icon
+        alt="Profile"
+        className="w-8 h-8 rounded-full"
+      />
+    </button> */}
+    <div className="flex items-center space-x-4">
+    {/* {contractContent && (
+      <Button variant="outline" onClick={handleDownload}>
+        <Download className="mr-2 h-4 w-4" /> Download
+      </Button>
+    )} */}
+    {/* Profile Icon */}
+ <div className="flex items-center mr-19 space-x-3">
+  {/* Dashboard Button */}
+  <button
+    className="flex items-center mr-19 gap-2 px-4 py-2 mr-30 rounded-full bg-gray-100 hover:bg-gray-200 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all duration-200 ease-in-out"
+    aria-label="Go to Dashboard"
+    title="Dashboard"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-5 h-5 text-gray-700"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M3 9.75L12 3l9 6.75M4.5 10.5V19.5a.75.75 0 00.75.75h4.5V15a.75.75 0 01.75-.75h3a.75.75 0 01.75.75v5.25h4.5a.75.75 0 00.75-.75V10.5"
+      />
+    </svg>
+    <span className="text-sm font-medium text-gray-800">Dashboard</span>
+  </button>
+
+  {/* Profile Button */}
+  <button
+    className="flex items-center mr-20 justify-center w-12 h-12 rounded-full bg-gray-100 hover:bg-gray-200 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all duration-200 ease-in-out"
+    aria-label="Open user profile"
+    title="User Profile"
+  >
+    <div className="relative">
+      <img
+        src="https://avatars.githubusercontent.com/u/583231?v=4"
+        alt="User Profile"
+        className="w-9 h-9 rounded-full object-cover border-2 border-gray-300"
+        onError={(e) => {
+          e.currentTarget.src = "https://via.placeholder.com/150";
+        }}
+      />
+      <span className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-white rounded-full"></span>
+    </div>
+  </button>
+</div>
+
+  </div>
         </header>
 
         <h2 className="text-2xl font-semibold mb-6">Start a fresh contract</h2>
