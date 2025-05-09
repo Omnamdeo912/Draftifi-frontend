@@ -859,7 +859,7 @@ export function generateContractHTML(answers: Record<string, string>): string {
         <p>____________________________</p>
       </div>
 
-      <p style="text-align: center; margin-top: 50px; font-size: 10pt;">©2002-2025 LawDepot.com®</p>
+      <p style="text-align: center; margin-top: 50px; font-size: 10pt;">©Draftifi.com</p>
     </div>
   `;
 

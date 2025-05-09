@@ -11,7 +11,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children, title, subtitle }) =>
     <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4">
       {/* Background pattern anchored to center-bottom */}
       <div
-        className="absolute inset-0 bg-no-repeat bg-bottom bg-contain opacity-20 pointer-events-none"
+        className="absolute inset-0 bg-no-repeat bg-bottom bg-contain opacity-65 pointer-events-none"
         style={{
           backgroundImage: `url('/assets/Draftifi-onboarding-background.png')`,
         }}

@@ -19,7 +19,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-300 text-gray-900">
       <div className="container mx-auto px-4 py-12">
         <div className="flex justify-center">
           <Logo />
@@ -27,7 +27,7 @@ const Dashboard = () => {
         
         <div className="max-w-3xl mx-auto mt-8">
           <h1 className="text-4xl font-bold text-center">Welcome to Draftifi</h1>
-          <p className="mt-4 text-center text-gray-600">
+          <p className="mt-4 text-center text-gray-900">
             Welcome to Draftifi! We make contracts easier. Get smart clause suggestions, understand your contract's
             meaning, and check if it's correctly formatted. Create a new draft or upload your existing drafts or
             templates to understand and draft it better.

@@ -3,7 +3,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
-
+import { useNavigate } from 'react-router-dom';
 import Logo from '@/components/Logo';
 import ContractChecklist from '@/components/ContractChecklist';
 import ComplianceInfo from '@/components/ComplianceScore';
@@ -232,11 +232,15 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-100">
       <div className="container mx-auto px-4 py-6">
         {/* Header */}
         <header className="flex justify-between items-center mb-6">
-          <Logo />
+          {/* <Logo /> */}
+            <div className="flex items-center space-x-2">
+    <Logo />
+    <span className="text-secondary font-national-park text-3xl">Draftifi</span>
+  </div>
           {/* {contractContent && (
             <Button variant="outline" onClick={handleDownload}>
               <Download className="mr-2 h-4 w-4" /> Download
@@ -262,6 +266,7 @@ const Index = () => {
     className="flex items-center mr-19 gap-2 px-4 py-2 mr-30 rounded-full bg-gray-100 hover:bg-gray-200 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all duration-200 ease-in-out"
     aria-label="Go to Dashboard"
     title="Dashboard"
+    onClick={() => navigate('/dashboard')} // Navigate t
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -303,12 +308,12 @@ const Index = () => {
   </div>
         </header>
 
-        <h2 className="text-2xl font-semibold mb-6">Start a fresh contract</h2>
+        {/* <h2 className="text-2xl font-semibold mb-6">Start a fresh contract</h2> */}
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           {/* Left Sidebar */}
           <div className="lg:col-span-1 space-y-6">
-            <ContractChecklist 
+            <ContractChecklist classname = "text-gray-900"
               items={checklistItems} 
               title="Employment Agreement Structure" 
             />

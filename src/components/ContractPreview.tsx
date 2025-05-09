@@ -104,19 +104,27 @@ const ContractPreview: React.FC<ContractPreviewProps> = ({ answers, onBack }) =>
 
       {!contract && (
         <div className="space-y-6">
+           <button
+            onClick={handleGenerateDummyContract}
+            className="ml-0 bg-[#5D5E80] text-white px-4 py-2 rounded hover:bg-[#7D7E9F]"
+          >
+            Generate Contract
+          </button>
           <button
             onClick={handleGenerateContract}
             disabled={loading}
-            className="bg-[#303030] text-white px-4 py-2 rounded hover:bg-[#505050] disabled:opacity-50"
+            
+            className="hidden bg-[#303030] text-white px-4 py-2 rounded hover:bg-[#505050] disabled:opacity-50"
           >
-            {loading ? 'Generating...' : 'Generate Contract'}
+            {/* {loading ? 'Generating...' : 'Generate Contract'} */}
+            
           </button>
-          <button
+          {/* <button
             onClick={handleGenerateDummyContract}
             className="ml-4 bg-[#5D5E80] text-white px-4 py-2 rounded hover:bg-[#7D7E9F]"
           >
-            Template Contract
-          </button>
+            Generate Contract
+          </button> */}
         </div>
       )}
 

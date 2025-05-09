@@ -20,7 +20,7 @@ const ContractChecklist: React.FC<ContractChecklistProps> = ({ items, title }) =
       <ul className="space-y-2">
         {items.map((item) => (
           <li key={item.id} className="flex items-center gap-2">
-            <div className={`w-5 h-5 flex items-center justify-center rounded border ${
+            <div className={`w-5 h-5 flex items-center justify-center border-indigo-400 rounded border ${
               item.isCompleted 
                 ? 'bg-draftifi-blue border-draftifi-blue text-white' 
                 : 'border-gray-300'

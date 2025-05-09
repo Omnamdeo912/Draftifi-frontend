@@ -242,7 +242,7 @@ const QuestionForm: React.FC<QuestionFormProps> = ({
         type: 'section'
       }))} title="Completed Sections" /> */}
       <div className="flex items-center gap-2 mb-6">
-        <h2 className="text-lg text-gray-500">
+        <h2 className="text-lg text-gray-800">
           {question}
       </h2>
         <TooltipProvider>
@@ -261,12 +261,12 @@ const QuestionForm: React.FC<QuestionFormProps> = ({
         </TooltipProvider>
       </div>
       {suggestions.length > 0 && (
-        <div className="mb-4 flex flex-wrap gap-2">
+        <div className="mb-4 flex flex-wrap text-gray-700 gap-2">
           {suggestions.map((suggestion) => (
             <button
               key={suggestion}
               onClick={() => setAnswer(suggestion)}
-              className="bg-[#edeafd] text-[#5D5E80] px-4 py-2 rounded-md text-sm hover:bg-[#d1d0e7] transition-colors"
+              className="bg-[#edeafd] px-4 py-2 rounded-md text-sm hover:bg-[#d1d0e7] transition-colors"
             >
               {suggestion}
             </button>
@@ -277,7 +277,7 @@ const QuestionForm: React.FC<QuestionFormProps> = ({
         <div className="flex items-center gap-2">
           {inputField}
           {inputType === 'text' && (
-          <Button type="button" variant="outline" size="icon" className="shrink-0">
+          <Button type="button" variant="outline" size="icon" className="shrink-0 border-indigo-400">
             <Mic className="h-4 w-4" />
           </Button>
           )}
@@ -294,7 +294,7 @@ const QuestionForm: React.FC<QuestionFormProps> = ({
                     onClick={handleAddAnnexure}
                     className="flex items-center gap-2"
                   >
-                    <FileText className="h-4 w-4" />
+                    <FileText className="h-4 border-indigo-300 w-4" />
                     Add to annexure
                   </Button>
                 </TooltipTrigger>
