@@ -19,7 +19,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-300 text-gray-900">
+    <div className="min-h-screen bg-gray-200 text-gray-900">
       <div className="container mx-auto px-4 py-12">
         <div className="flex justify-center">
           <Logo />
